@@ -13,10 +13,8 @@ def isValidInput(promptText: str, failText: str, validInputs: list) -> str:
         return reply in validInputs
 
     for value in validInputs:
-        if not value.isdigit():
-            validInputs[validInputs.index(value)] = value.lower()
-        else:
-            validInputs[validInputs.index(value)] = str(value)
+        validInputs[validInputs.index(value)] = str(value) if value.isdigit() else value.lower()
+
     if not failText:
         failText = promptText
 
